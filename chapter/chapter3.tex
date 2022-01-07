@@ -1,0 +1,21 @@
+
+\chapter{寅时一刻}
+\section{曾依藉的绿}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{figure/cancha.pdf}
+    \caption{插入图片示例}
+\end{figure}
+
+
+插入代码示例：
+\begin{lstlisting}[language=C]
+    qui reg SR1 $xx dummy1-dummy24 if time==0
+    predict e1,res
+    g e2 = e1^2
+    g lne2 = log(e2)
+    qui reg lne2 peincome if time==0,noc
+    predict lne2f
+    g e2f =exp(lne2f)
+    reg SR1 $xx dummy1-dummy24 if time==0 [aw=1/e2f]
+\end{lstlisting}

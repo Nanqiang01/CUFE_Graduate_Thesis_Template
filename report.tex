@@ -1,0 +1,271 @@
+%---------------------------------------------------------------------
+%	个性化信息
+%--------------------------------------------------------------------
+\newcommand{\MYTITLE}{污秽之世，美丽之笼}  %论文标题
+\newcommand{\MYID}{2018300000}  %学号
+\newcommand{\MYNAME}{藤原妹红}  %姓名
+\newcommand{\MYSCHOOL}{金融学院}  %学院
+\newcommand{\MYMAJOR}{金融实验班}  %专业
+\newcommand{\MYADVISOR}{上白泽慧音}  %指导教师
+\newcommand{\MYDATE}{2022年1月7日}  %日期
+%---------------------------------------------------------------------
+%   各种导言
+%--------------------------------------------------------------------
+\documentclass[a4paper,12pt]{report}
+
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper,left=2.5cm,right=2.5cm,top=2.54cm,bottom=2.54cm}%页边距
+\usepackage{ctex}
+\usepackage{xeCJK}
+\usepackage{comment}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{subfigure}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage[titletoc]{appendix}
+%\usepackage[top=30mm,bottom=30mm,left=20mm,right=20mm]{geometry}
+%\usepackage{cite}
+
+%\usepackage{courier}
+\setmonofont{Courier New}
+\usepackage{listings}
+
+\usepackage{scrextend}
+%\usepackage{perpage}
+%\MakePerPage[1]{footnote}
+\usepackage[perpage]{footmisc}
+\deffootnote[1em]{1em}{1em}{\zihao{5}\thefootnotemark.\space}  %脚注
+%---------------------------------------------------------------------
+%   参考文献设置
+%--------------------------------------------------------------------
+\usepackage[backend = biber, style = references/gb7714-2015, defernumbers=true]{biblatex}
+\renewcommand*{\bibfont}{\small}
+\addbibresource{references/bibtest.bib}
+\renewcommand{\bibname}{参考文献}
+%---------------------------------------------------------------------
+%	引用文献设置为上标
+%---------------------------------------------------------------------
+\begin{comment}
+    \makeatletter
+    \def\@cite#1#2{\textsuperscript{[{#1\if@tempswa , #2\fi}]}}
+    \makeatother
+\end{comment}
+
+\lstset{tabsize=4, keepspaces=true,
+    xleftmargin=2em,xrightmargin=0em, aboveskip=0.1em,
+    %backgroundcolor=\color{gray!20},  % 定义背景颜色
+    frame=none,                       % 表示不要边框
+    extendedchars=false,              % 解决代码跨页时，章节标题，页眉等汉字不显示的问题
+    numberstyle=\ttfamily,
+    basicstyle=\ttfamily,
+    keywordstyle=\color{blue}\bfseries,
+    breakindent=10pt,
+    identifierstyle=,                 % nothing happens
+    commentstyle=\color{green}\small,  % 注释的设置
+    morecomment=[l][\color{green}]{\#},
+    numbers=left,stepnumber=1,numberstyle=\scriptsize,
+    showstringspaces=false,
+    showspaces=false,
+    flexiblecolumns=true,
+    breaklines=true, breakautoindent=true,breakindent=4em,
+    escapeinside={/*@}{@*/},
+}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\newtheorem{theorem}{定理}
+\newtheorem{definition}{定义}
+\newtheorem{corollary}{推论}
+\newtheorem{example}{例}
+\renewcommand {\thetable} {\arabic{table}}
+\renewcommand {\thefigure} {\arabic{figure}}
+\usepackage{amsfonts}
+\usepackage{lipsum}
+%\usepackage{bm}
+\usepackage{booktabs} % for much better looking tables
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfigure} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+\usepackage{cases} %equation set
+\usepackage{multirow} %use table
+\usepackage{algorithm}
+\usepackage{algorithmic}
+%\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage[font={small}]{caption}  % 这样设置表头字体好像是10.95号
+\usepackage{zhnumber} % change section number to chinese
+\hypersetup{colorlinks,linkcolor=black,anchorcolor=black,citecolor=black, pdfstartview=FitH,bookmarksnumbered=true,bookmarksopen=true,} % set href in tex & pdf
+%\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode} % 插入matlab代码
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+\setlength{\baselineskip}{22pt}
+%---------------------------------------------------------------------
+%	图表顺序标号，不分章节
+%---------------------------------------------------------------------
+\usepackage{chngcntr}
+\usepackage[OT1]{fontenc} 
+\counterwithout{table}{chapter}
+\counterwithout{table}{section}
+\counterwithout{figure}{chapter}
+\counterwithout{figure}{section}
+\counterwithout{equation}{chapter}
+\counterwithout{equation}{section}
+\titleclass{\chapter}{straight}%禁止chapter换页
+%---------------------------------------------------------------------
+%	页眉页脚设置
+%---------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhead[C]{\MYTITLE}
+\lhead{}
+\rhead{}
+\cfoot{\thepage}
+\newcommand{\myfont}{\fontfamily{ptm}\fontseries{b}\selectfont}
+% \newcommand*{\mysfont}{\fontfamily{timesbd}\selectfont}
+%---------------------------------------------------------------------
+%	标题格式设置
+%---------------------------------------------------------------------
+\renewcommand\thesection{（\zhnum{section}）}
+\renewcommand \thesubsection {\arabic{subsection}.}
+\renewcommand \thechapter {\zhnum{chapter}、}
+\titleformat{\chapter}{\centering\zihao{4}\songti\bfseries}{\chinese{chapter}、}{0.00em}{}
+\titlespacing{\chapter}{12pt}{12pt}{*3}  %空行直接按照12pt算的，即小四号
+\titlespacing{\section}{0pt}{0pt}{*0}
+\titlespacing{\subsection}{0pt}{0pt}{*0}
+\titleformat{\section}{\zihao{-4}\songti\bfseries}{$\qquad$（\chinese{section}）}{0.05em}{}
+\titleformat{\subsection}{\zihao{-4}\songti\mdseries}{$\qquad$\arabic{subsection}.$\ $}{0.05em}{}
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+%---------------------------------------------------------------------
+%	摘要设置
+%---------------------------------------------------------------------
+%\renewcommand{\abstractname}{摘要}
+\newcommand{\enabstractname}{ABSTRACT}
+\newcommand{\cnabstractname}{内\quad 容\quad 摘\quad 要}
+\newenvironment{enabstract}{%
+  \par\small
+  \noindent\mbox{}\hfill{{\zihao{3} \fontfamily{Times New Roman Bold}\selectfont 
+  \textbf{\enabstractname}%
+  }}\hfill\mbox{}\par
+  \vskip 1.0ex}{\par\vskip 1.0ex}
+\newenvironment{cnabstract}{%
+  \par\small
+  \noindent\mbox{}\hfill{\bfseries \zihao{3} \cnabstractname}\hfill\mbox{}\par
+  \vskip 1.0ex}{\par\vskip 1.0ex}
+
+%---------------------------------------------------------------------
+%	目录页设置
+%---------------------------------------------------------------------
+%\renewcommand{\contentsname}{\zihao{-3} 目\quad 录}
+\setcounter{tocdepth}{1}
+\renewcommand{\contentsname}{\zihao{3}\bfseries\centering{目$\quad$录}}
+\titlecontents{chapter}[0em]{\songti\zihao{4}\bfseries}{\thecontentslabel\ }{}
+{\hspace{.5em}\titlerule*[4pt]{$\cdot$}\contentspage}
+\titlecontents{section}[2em]{\vspace{0.1\baselineskip}\songti\zihao{4}}{\thecontentslabel\ }{}
+{\hspace{.5em}\titlerule*[4pt]{$\cdot$}\contentspage}
+%\titlecontents{subsection}[4em]{\vspace{0.1\baselineskip}\songti\zihao{-4}}{\thecontentslabel\ }{}
+%{\hspace{.5em}\titlerule*[4pt]{$\cdot$}\contentspage}
+\setCJKmainfont[AutoFakeBold = {2.17}]{SimSun}  % 全局中文字体设置
+
+\begin{document}
+% \setCJKfamilyfont{zhsong}{}  % 采用标准宋体 
+% \renewcommand*{\songti}{\CJKfamily{zhsong}}
+% \setCJKfamilyfont{zhsong}{宋体}
+\setCJKfamilyfont{songti}[AutoFakeBold = {2.17}]{SimSun}
+\renewcommand*{\songti}{\CJKfamily{songti}}
+% \setmainfont{Times New Roman}
+\setmainfont[AutoFakeBold = {2.17}]{SimSun}
+
+% \setCJKmainfont{\songti}
+%---------------------------------------------------------------------
+%	封面设置
+%---------------------------------------------------------------------
+\begin{titlepage}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{figure/zhongcai.png}\\
+        \vspace{8mm}
+        \textbf{\zihao{-0}\songti{本科生毕业论文（设计）}}\\
+        \vspace{25mm}
+        \textbf{\zihao{2}{\heiti\textbf{\MYTITLE}}}\\[0.8cm]
+        \vspace{50mm}
+        % \vspace{\fill}
+        % \setlength{\extrarowheight}{3mm}
+        {\songti\zihao{3}
+            \begin{tabular}{rp{8.2cm}<{\centering}}
+                % \specialrule{0em}{30pt}
+                {\makebox[4\ccwd][s]{学生姓名：}}    & \underline{\makebox[8cm]{\MYNAME}}     \\[10pt]
+                {\makebox[4\ccwd][s]{学\qquad 号：}}    & \underline{\makebox[8cm]{\MYID}}       \\[10pt]
+                {\makebox[4\ccwd][s]{学\qquad 院：}}    & \underline{\makebox[8cm]{\MYSCHOOL}}     \\[10pt]
+                {\makebox[4\ccwd][s]{专\qquad 业：}}    & \underline{\makebox[8cm]{\MYMAJOR}}    \\[10pt]
+                {\makebox[4\ccwd][s]{指导教师：}}       & \underline{\makebox[8cm]{\MYADVISOR}}  \\[10pt]
+                {\makebox[4\ccwd][s]{日\qquad 期：}}    & \underline{\makebox[8cm]{\MYDATE}}            \\[10pt]
+            \end{tabular}
+        }\\[2cm]
+    \end{center}
+\end{titlepage}
+%---------------------------------------------------------------------
+%  摘要页
+%---------------------------------------------------------------------
+\setcounter{page}{1}
+\thispagestyle{plain}
+\input{chapter/abstract.tex}
+\newpage
+
+%---------------------------------------------------------------------
+%  目录页
+%---------------------------------------------------------------------
+\thispagestyle{plain}
+\setcounter{page}{1}
+\begin{spacing}{1.375} % TODO: 这个行距有问题
+\tableofcontents % 生成目录
+\end{spacing}
+\newpage
+%---------------------------------------------------------------------
+%  引言
+%---------------------------------------------------------------------
+\begin{center}
+    \textbf{\zihao{-3}{\MYTITLE}}
+    \\[12pt]
+\end{center}
+\thispagestyle{plain}
+\setcounter{page}{1}
+
+\input{chapter/introduction.tex}
+%---------------------------------------------------------------------
+%  正文
+%---------------------------------------------------------------------
+\input{chapter/chapter1.tex}
+\input{chapter/chapter2.tex}
+\input{chapter/chapter3.tex}
+%---------------------------------------------------------------------
+%  参考文献
+%---------------------------------------------------------------------
+
+\printbibliography
+\newpage
+\chapter*{中央财经大学本科毕业论文（设计）原创性声明}
+\addcontentsline{toc}{chapter}{中央财经大学本科毕业论文（设计）原创性声明}
+\vspace{1mm}
+本人郑重声明：所提交的毕业论文（设计）《\MYTITLE》，
+是本人在指导老师的指导下独立进行研究工作所取得的成果。
+除文中已经注明引用的内容外，不含任何其他个人或集体已经发表或撰写过的作品成果，
+不存在购买、由他人代写、剽窃和伪造数据等作假行为。
+对本文研究/设计做出重要贡献的个人和集体，均已在文中以明确方式标明。
+本人完全意识到本声明的法律结果，如违反有关规定或上述声明，愿意承担由此产生的一切后果。
+\\[50pt]
+作者签名：\\
+\rightline{年 \quad 月 \quad 日}
+
+\newpage
+\chapter*{致谢}
+\addcontentsline{toc}{chapter}{致谢}
+\input{chapter/acknowledgement.tex}
+\newpage
+\chapter*{附录}
+\addcontentsline{toc}{chapter}{附录}
+
+\end{document}
