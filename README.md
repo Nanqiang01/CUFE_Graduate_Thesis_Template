@@ -16,6 +16,8 @@ Unofficial Central University of Finance and Economics LaTeX template for banche
 
 如果不需要bibtex管理参考文献，可以不用biber，直接单次（或多次）xelatex，能节省一些时间
 
+# 注意事项
+1. 表格字号需要手动设置\zihao{5}
 # 参考资源
 
 1. 格式参考[中央财经大学金融学院规定](http://sf.cufe.edu.cn/info/1124/3865.htm)
