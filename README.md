@@ -4,9 +4,9 @@
 
 Unofficial Central University of Finance and Economics LaTeX template for banchelor thesis
 
-> ## 20220107更新
-> 1. 针对本科毕业论文要求设计了模板
-> 2. 暂未解决英文摘要字体问题
+> ## 2022010799更新
+> 1. 修正中英文摘要字体问题
+> 2. 修正脚注样式
 
 # 使用说明
 
