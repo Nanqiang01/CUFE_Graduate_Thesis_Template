@@ -4,7 +4,7 @@
 
 Unofficial Central University of Finance and Economics LaTeX template for banchelor thesis
 
-> ## 2022010709更新
+> ## 20220109更新
 > 1. 修正中英文摘要字体问题
 > 2. 修正脚注样式
 > 3. 尚未解决的问题：标号列表的行间距问题
@@ -21,6 +21,6 @@ Unofficial Central University of Finance and Economics LaTeX template for banche
 1. 表格字号需要手动设置\zihao{5}
 # 参考资源
 
-1. 格式参考[中央财经大学金融学院规定](http://sf.cufe.edu.cn/info/1124/3865.htm)
+1. 格式参考[中央财经大学毕设规定](https://pan.baidu.com/s/1rbN1F8ZDbZVNAwkythRQeg)，提取码`rvmn`
 
 2. 基于github用户zshicode的[南开大学系列模板项目](https://github.com/zshicode/LaTeX-Beamer-Nankai)修改
