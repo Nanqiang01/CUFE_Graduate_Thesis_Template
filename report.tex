@@ -119,7 +119,7 @@
 \fancyhead[C]{\zihao{5}\MYTITLE}
 \lhead{}
 \rhead{}
-\cfoot{\thepage \\ \textcolor{red}{请注意格式问题可能会导致拒绝答辩。以任何形式采用该模板意味着您已承认：使用该模板而潜在导致的一切负面或正面后果与任何人都没有任何关系。}}
+\cfoot{\thepage \\ \textcolor{red}{请注意格式问题可能会导致拒绝答辩。以任何形式采用该模板意味着您已承认：使用该模板而引发的一切负面或正面后果与任何你以外的人都没有任何关系。}}
 
 %---------------------------------------------------------------------
 %	调整字体
@@ -246,6 +246,7 @@
 %---------------------------------------------------------------------
 %  其他
 %---------------------------------------------------------------------
+\vspace{12pt}
 \printbibliography
 \addcontentsline{toc}{chapter}{参考文献}
 \newpage
@@ -259,8 +260,7 @@
 对本文研究/设计做出重要贡献的个人和集体，均已在文中以明确方式标明。
 本人完全意识到本声明的法律结果，如违反有关规定或上述声明，愿意承担由此产生的一切后果。
 \\[50pt]
-作者签名：\\
-\rightline{年 \quad 月 \quad 日}
+作者签名：\hfill 年 \quad 月 \quad 日\\
 \newpage
 \chapter*{致谢}
 \addcontentsline{toc}{chapter}{致谢}
@@ -268,4 +268,5 @@
 \newpage
 \chapter*{附录}
 \addcontentsline{toc}{chapter}{附录}
+\input{chapter/appendix.tex}
 \end{document}
