@@ -4,9 +4,10 @@
 
 Unofficial Central University of Finance and Economics LaTeX template for banchelor thesis
 
-> ## 2022010799更新
+> ## 2022010709更新
 > 1. 修正中英文摘要字体问题
 > 2. 修正脚注样式
+> 3. 尚未解决的问题：标号列表的行间距问题
 
 # 使用说明
 
