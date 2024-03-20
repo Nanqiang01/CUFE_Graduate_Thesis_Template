@@ -4,6 +4,8 @@
 
 Unofficial Central University of Finance and Economics LaTeX template for banchelor thesis (2024 renew)
 
+Powered by GPT-4
+
 > ## 20240320更新
 > 1. 修正全局字体问题
 > 2. 修正脚注字体
