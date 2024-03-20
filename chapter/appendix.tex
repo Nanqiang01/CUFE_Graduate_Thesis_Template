@@ -1,11 +1,21 @@
 插入代码示例：
-\begin{lstlisting}[language=C]
-    qui reg SR1 $xx dummy1-dummy24 if time==0
-    predict e1,res
-    g e2 = e1^2
-    g lne2 = log(e2)
-    qui reg lne2 peincome if time==0,noc
-    predict lne2f
-    g e2f =exp(lne2f)
-    reg SR1 $xx dummy1-dummy24 if time==0 [aw=1/e2f]
+
+\begin{lstlisting}[style=python,title={Python code}] 
+#PythonDraw.py
+import turtle as t
+t.setup(650, 350, 200, 200)
+t.penup()
+t.fd(-250)
+t.pendown()
+t.pensize(25)
+t.pencolor("purple color")
+t.seth(-40)
+for i in range(4):
+    t.circle(40, 80)
+    t.circle(-40, 80)
+    t.circle(40, 80/2)
+    t.fd(40)
+    t.circle(16, 180)
+    t.fd(40 * 2/3)
+    t.done()
 \end{lstlisting}
