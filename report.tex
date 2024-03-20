@@ -1,110 +1,150 @@
 %---------------------------------------------------------------------
-%	个性化信息
-%--------------------------------------------------------------------
+%	 个人信息
+%---------------------------------------------------------------------
 \input{chapter/chacterize.tex}
 %---------------------------------------------------------------------
-%   各种导言
-%--------------------------------------------------------------------
-\documentclass[a4paper,12pt]{report}
-
-\usepackage{geometry} % to change the page dimensions
-\geometry{a4paper,left=2.5cm,right=2.5cm,top=2.54cm,bottom=2.54cm}%页边距
-\usepackage{ctex}
-\usepackage{xeCJK}
-\usepackage{comment}
-\usepackage{setspace}
-\usepackage{fancyhdr}
-\usepackage{graphicx}
-\usepackage{wrapfig}
-\usepackage{subfigure}
-\usepackage{array}
-\usepackage{titlesec}
-\usepackage{titletoc}
-\usepackage[titletoc]{appendix}
-\usepackage{listings}
-\usepackage{scrextend}
-\usepackage[perpage]{footmisc}
+%    文档类型
 %---------------------------------------------------------------------
-%   脚注设置
-%--------------------------------------------------------------------
-\usepackage{pifont}
+\documentclass[a4paper, 12bp]{report}
+%---------------------------------------------------------------------
+%    导入宏包
+%---------------------------------------------------------------------
+\usepackage{geometry} % 改变页面尺寸
+\usepackage{ctex} % 中文支持
+\usepackage{xeCJK} % 支持CJK字体，适用于中文、日文和韩文
+\usepackage{anyfontsize} % 支持任意字号
+\usepackage{comment} % 添加注释环境
+\usepackage{setspace} % 设置行间距
+\usepackage{fancyhdr} % 自定义页眉页脚
+\usepackage{graphicx} % 插入图像
+\usepackage{wrapfig} % 文字环绕图像
+\usepackage{subcaption} % 替代过时的 subfigure，支持子图与子标题
+\usepackage{float} % 浮动体控制
+\usepackage{array} % 增强表格功能
+\usepackage{titlesec} % 修改章节标题样式
+\usepackage{titletoc} % 修改目录样式
+\usepackage[titletoc]{appendix} % 附录设置
+\usepackage{listings, color} % 插入代码
+\usepackage{xcolor} % 代码高亮
+\usepackage{algpseudocode} % 代替过时的 algorithmic，用于编写伪代码
+\usepackage{algorithm} % 插入算法伪代码环境
+\usepackage{scrextend} % KOMA-Script 扩展
+\usepackage[perpage]{footmisc} % 脚注相关设置
+\usepackage{pifont} % 提供圆圈数字等特殊字符
+\usepackage[OT1]{fontenc} % 字体编码为 OT1
+\usepackage{inputenc} % 输入编码为 utf8
+\usepackage{fontspec} % 西文字体设置
+\usepackage[backend=biber, style=gb7714-2015, defernumbers=true]{biblatex} % 参考文献管理
+\usepackage{amsmath} % 数学公式
+\usepackage{amsthm} % 定理环境
+\newtheorem{theorem}{定理}
+\newtheorem{definition}{定义}
+\newtheorem{corollary}{推论}
+\newtheorem{example}{例}
+\renewcommand {\thetable} {\arabic{table}} % 表格编号为阿拉伯数字
+\renewcommand {\thefigure} {\arabic{figure}} % 图形编号为阿拉伯数字
+\usepackage{amsfonts} % 数学字体
+\usepackage{lipsum} % 生成随机文本
+\usepackage{longtable, booktabs} % 更优美的表格
+\usepackage{paralist} % 更灵活的列表(customisable lists)
+\usepackage{verbatim} % 更好的 verbatim 环境
+\usepackage{cases} % 公式组环境
+\usepackage{multirow} % 在表格中跨多行合并单元格
+\usepackage{tabularx, booktabs} % 提供额外的表格功能
+\usepackage{zhnumber} % 章节编号为中文
+\usepackage{hyperref} % 超链接支持
+\usepackage[font=small]{caption} % 设置图表标题为五号
+\usepackage{chngcntr} % 允许改变计数器的前缀
+%---------------------------------------------------------------------
+%     页边距设置
+%---------------------------------------------------------------------
+\geometry{a4paper,left=2.5cm,right=2.5cm,top=2.54cm,bottom=2.54cm}
+%---------------------------------------------------------------------
+%     脚注设置
+%---------------------------------------------------------------------
 \renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}}
-\deffootnote[1em]{1em}{1em}{\zihao{5}\thefootnotemark\space}  %脚注
+% 脚注字体设置为small
+\renewcommand{\footnotesize}{\small}
+\deffootnote[1em]{1em}{1em}{\small\thefootnotemark\space}
 % 脚注的横线
-\renewcommand{\footnoterule}{%
-  \kern -3pt
-  \hrule width 0.25\paperwidth height 1pt
-  \kern 2pt
+\renewcommand{\footnoterule}{
+    \kern -3bp
+    \hrule width 0.25\paperwidth height 1bp
+    \kern 2bp
 }
 %---------------------------------------------------------------------
-%   参考文献设置
-%--------------------------------------------------------------------
-\usepackage[backend = biber, style = references/gb7714-2015, defernumbers=true]{biblatex}
-\renewcommand*{\bibfont}{\small}
+%     参考文献设置
+%---------------------------------------------------------------------
+\renewcommand*{\bibfont}{\normalsize}
 \addbibresource{references/bibtest.bib}
 \renewcommand{\bibname}{参考文献}
 %---------------------------------------------------------------------
 %	引用文献设置为上标
 %---------------------------------------------------------------------
 \begin{comment}
-    \makeatletter
-    \def\@cite#1#2{\textsuperscript{[{#1\if@tempswa , #2\fi}]}}
-    \makeatother
+        \makeatletter
+        \def\@cite#1#2{\textsuperscript{[{#1\if@tempswa , #2\fi}]}}
+        \makeatother
 \end{comment}
-
-\lstset{tabsize=4, keepspaces=true,
-    xleftmargin=2em,xrightmargin=0em, aboveskip=0.1em,
-    %backgroundcolor=\color{gray!20},  % 定义背景颜色
-    frame=none,                       % 表示不要边框
-    extendedchars=false,              % 解决代码跨页时，章节标题，页眉等汉字不显示的问题
-    numberstyle=\ttfamily,
-    basicstyle=\ttfamily,
-    keywordstyle=\color{blue}\bfseries,
-    breakindent=10pt,
-    identifierstyle=,                 % nothing happens
-    commentstyle=\color{green}\small,  % 注释的设置
-    morecomment=[l][\color{green}]{\#},
-    numbers=left,stepnumber=1,numberstyle=\scriptsize,
-    showstringspaces=false,
-    showspaces=false,
-    flexiblecolumns=true,
-    breaklines=true, breakautoindent=true,breakindent=4em,
-    escapeinside={/*@}{@*/},
+%---------------------------------------------------------------------
+%     附录代码设置
+%---------------------------------------------------------------------
+% Python highlights color settings
+\definecolor{pBasic}{RGB}{248, 248, 242}      % 默认
+\definecolor{pKeyword}{RGB}{228,0,128}        % 洋红色
+\definecolor{pString}{RGB}{148,0,209}         % 紫色
+\definecolor{pComment}{RGB}{117,113,94}       % 灰色
+\definecolor{pIdentifier}{RGB}{166, 226, 46}  % 绿色
+\definecolor{pBackground}{RGB}{245,245,245}   % 浅灰色
+\definecolor{pNumber}{RGB}{128,128,128}       % 灰色
+\lstdefinestyle{python}{
+    language=python,               % 语言
+    xleftmargin=25pt,
+    xrightmargin=15pt,
+    frame=tlbr,framesep=4pt,framerule=0pt, % 边框设置
+    % frame=shadowbox,rulesepcolor=\color{red!20!green!20!blue!20}, % 边框设置
+    basicstyle=\normalsize\ttfamily,          % 代码字体、大小
+    basicstyle=\footnotesize\fontspec{Consolas},
+    keywordstyle=\color{pKeyword},       % 关键字颜色
+    stringstyle=\color{pString},         % 字符串颜色
+    commentstyle=\color{pComment},       % 注释颜色
+    backgroundcolor=\color{pBackground}, % 背景颜色
+    emph={format_string,eff_ana_bf,permute,eff_ana_btr}, % 自定义函数
+    emphstyle=\color{pIdentifier},       % 自定义函数颜色
+    showspaces=false,                    % 显示空格
+    showstringspaces=false,              % 用下划线显示空格
+    showtabs=false,                      % 显示tab
+    tabsize=4,                           % 设置默认缩进空格数
+    captionpos=t,                        % 设置caption在顶部
+    breaklines=true,                     % 自动换行
+    numberstyle=\tiny\color{pNumber},
+    numbers=left,                        % 行号位置
+    stepnumber=1,                        % 行号计数间隔
+    %numbersep=5pt,                      % 行号与代码间距
 }
-\usepackage{amsmath}
-\usepackage{amsthm}
-\newtheorem{theorem}{定理}
-\newtheorem{definition}{定义}
-\newtheorem{corollary}{推论}
-\newtheorem{example}{例}
-\renewcommand {\thetable} {\arabic{table}}
-\renewcommand {\thefigure} {\arabic{figure}}
-\usepackage{amsfonts}
-\usepackage{lipsum}
-%\usepackage{bm}
-\usepackage{booktabs} % for much better looking tables
-\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
-\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
-\usepackage{subfigure} % make it possible to include more than one captioned figure/table in a single float
-% These packages are all incorporated in the memoir class to one degree or another...
-\usepackage{cases} %equation set
-\usepackage{multirow} %use table
-\usepackage{algorithm}
-\usepackage{algorithmic}
-%\usepackage{cite}
-\usepackage{hyperref}
-\usepackage{longtable}
-\usepackage[font={small}]{caption}  % 这样设置表头字体好像是10.95号
-\usepackage{zhnumber} % change section number to chinese
-\hypersetup{colorlinks,linkcolor=black,anchorcolor=black,citecolor=black, pdfstartview=FitH,bookmarksnumbered=true,bookmarksopen=true,} % set href in tex & pdf
-%\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode} % 插入matlab代码
+%---------------------------------------------------------------------
+%    超链接设置
+%---------------------------------------------------------------------
+\hypersetup{colorlinks,linkcolor=black,anchorcolor=black,citecolor=black, pdfstartview=FitH,bookmarksnumbered=true,bookmarksopen=true,} % 设置引用样式
 \XeTeXlinebreaklocale "zh"
-\XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
-\setlength{\baselineskip}{22pt}
+\XeTeXlinebreakskip = 0bp plus 1bp minus 0.1bp % 微调 XeTeX 的行间距
 %---------------------------------------------------------------------
-%	图表顺序标号，不分章节
+%    列表间距设置
 %---------------------------------------------------------------------
-\usepackage{chngcntr}
+\let\enumerate\compactenum
+\let\endenumerate\endcompactenum
+\let\itemize\compactitem
+\let\enditemize\endcompactitem
+\let\description\compactdesc
+\let\enddescription\endcompactdesc
+%---------------------------------------------------------------------
+%    图表上下行间距设置
+%---------------------------------------------------------------------
+\captionsetup[table]{position=above,belowskip=17bp}
+\captionsetup[figure]{position=below,belowskip=17bp}
+%---------------------------------------------------------------------
+%    图表顺序标号，不分章节
+%---------------------------------------------------------------------
 \counterwithout{table}{chapter}
 \counterwithout{table}{section}
 \counterwithout{figure}{chapter}
@@ -113,104 +153,150 @@
 \counterwithout{equation}{section}
 \titleclass{\chapter}{straight}%禁止chapter换页
 %---------------------------------------------------------------------
-%	页眉页脚设置
+%    页眉页脚设置
 %---------------------------------------------------------------------
 \pagestyle{fancy}
-\fancyhead[C]{\zihao{5}\MYTITLE}
+\fancyhead[C]{\small\MYTITLE}
 \lhead{}
 \rhead{}
-\cfoot{\thepage \\ \textcolor{red}{请注意格式问题可能会导致拒绝答辩。以任何形式采用该模板意味着您已承认：使用该模板而引发的一切负面或正面后果与任何你以外的人都没有任何关系。}}
+% 页眉去除横线
+% \renewcommand{\headrulewidth}{0bp}
+% \cfoot{\thepage \\ \textcolor{red}{请注意格式问题可能会导致拒绝答辩。以任何形式采用该模板意味着您已承认：使用该模板而引发的一切负面或正面后果与任何你以外的人都没有任何关系。}}
 
 %---------------------------------------------------------------------
-%	调整字体
+%    调整字体
 %---------------------------------------------------------------------
-\usepackage[utf8]{inputenc}
-\usepackage[OT1]{fontenc}
-% \usepackage[T1]{fontenc}
-\newcommand{\myfont}{\fontfamily{qtm}\selectfont}
-\setCJKmainfont[AutoFakeBold = {2.17}]{宋体}  % 全局中文字体设置
-% \setmainfont[AutoFakeBold = {2.17}]{宋体}  %  将全局西文字体也都设置为宋体
-\setCJKfamilyfont{songti}[AutoFakeBold = {2.17}]{SimSun}
-\setCJKfamilyfont{heiti}[AutoFakeBold = {2.17}]{黑体}
-\renewcommand*{\songti}{\CJKfamily{songti}}
-% \setmainfont{TeX Gyre Termes}
-% \newcommand*{\mysfont}{\fontfamily{timesbd}\selectfont}
+\setCJKmainfont{simsun.ttc}[AutoFakeBold=2.17]
+\setCJKsansfont{simhei.ttf}[AutoFakeBold=2.17]
+\setCJKmonofont{simfang.ttf}
+\setCJKfamilyfont{zhsong}{simsun.ttc}[AutoFakeBold=2.17]
+\setCJKfamilyfont{zhhei}{simhei.ttf}[AutoFakeBold=2.17]
+\setCJKfamilyfont{zhkai}{simkai.ttf}
+\setCJKfamilyfont{zhfs}{simfang.ttf}
+\renewcommand*{\songti}{\CJKfamily{zhsong}}
+\renewcommand*{\heiti}{\CJKfamily{zhhei}}
+\renewcommand*{\kaishu}{\CJKfamily{zhkai}}
+\renewcommand*{\fangsong}{\CJKfamily{zhfs}}
+\makeatletter
+% 重定义\normalsize（小四）来设置字体为12bp和行间距为22bp
+\renewcommand\normalsize{%
+    \@setfontsize\normalsize{12bp}{17bp}%
+    \abovedisplayskip 17\p@ \@plus0\p@ \@minus0\p@
+    \abovedisplayshortskip \z@ \@plus0\p@
+    \belowdisplayshortskip 17\p@ \@plus0\p@ \@minus0\p@
+    \belowdisplayskip \abovedisplayskip
+    \let\@listi\@listI}
+% 重定义\small（五号）来设置字体为10.5bp和行间距为22bp
+\renewcommand\small{%
+    \@setfontsize\small{10.5bp}{17bp}%
+    \abovedisplayskip 17\p@ \@plus0\p@ \@minus0\p@
+    \abovedisplayshortskip \z@ \@plus0\p@
+    \belowdisplayshortskip 17\p@ \@plus0\p@ \@minus0\p@
+    \belowdisplayskip \abovedisplayskip
+    \let\@listi\@listI}
+% 重定义\large（四号）来设置字体为14bp和行间距为22bp
+\renewcommand\large{%
+    \@setfontsize\large{14bp}{17bp}%
+    \abovedisplayskip 17\p@ \@plus0\p@ \@minus0\p@
+    \abovedisplayshortskip \z@ \@plus0\p@
+    \belowdisplayshortskip 17\p@ \@plus0\p@ \@minus0\p@
+    \belowdisplayskip \abovedisplayskip
+    \let\@listi\@listI}
+% 重定义\Large（小三）来设置字体为15bp和行间距为22bp
+\renewcommand\Large{%
+    \@setfontsize\Large{15bp}{17bp}%
+    \abovedisplayskip 17\p@ \@plus0\p@ \@minus0\p@
+    \abovedisplayshortskip \z@ \@plus0\p@
+    \belowdisplayshortskip 17\p@ \@plus0\p@ \@minus0\p@
+    \belowdisplayskip \abovedisplayskip
+    \let\@listi\@listI}
+% 重定义\LARGE（三号）来设置字体为16bp和行间距为22bp
+\renewcommand\LARGE{%
+    \@setfontsize\LARGE{16bp}{17bp}%
+    \abovedisplayskip 17\p@ \@plus0\p@ \@minus0\p@
+    \abovedisplayshortskip \z@ \@plus0\p@
+    \belowdisplayshortskip 17\p@ \@plus0\p@ \@minus0\p@
+    \belowdisplayskip \abovedisplayskip
+    \let\@listi\@listI}
+\makeatother
 %---------------------------------------------------------------------
-%	标题格式设置
+%    标题格式设置
 %---------------------------------------------------------------------
 \renewcommand\thesection{（\zhnum{section}）}
 \renewcommand \thesubsection {\arabic{subsection}.}
 \renewcommand \thechapter {\zhnum{chapter}、}
-\titleformat{\chapter}{\centering\zihao{4}\songti\bfseries}{\chinese{chapter}、}{0em}{}
-\titlespacing{\chapter}{12pt}{12pt}{*3}  %空行直接按照12pt算的，即小四号
-\titlespacing{\section}{0pt}{0pt}{*0}
-\titlespacing{\subsection}{0pt}{0pt}{*0}
-\titleformat{\section}{\zihao{-4}\songti\bfseries}{$\qquad$（\chinese{section}）}{0em}{}
-\titleformat{\subsection}{\zihao{-4}\songti\mdseries}{$\qquad$\arabic{subsection}.$\ $}{0em}{}
+\titleformat{\chapter}{\centering\large\songti\bfseries}{\chinese{chapter}、}{0em}{}
+\titleformat{\section}{\normalsize\songti\bfseries}{\hspace{2em}（\chinese{section}）}{0em}{}
+\titleformat{\subsection}{\normalsize\songti\mdseries}{\hspace{2em}\arabic{subsection}.$\ $}{0em}{}
+
+\titlespacing{\chapter}{0bp}{22bp}{22bp} % 一级标题前后隔一行小四
+\titlespacing{\section}{0bp}{0bp}{*0}
+\titlespacing{\subsection}{0bp}{0bp}{*0}
+
 \renewcommand{\figurename}{图}
 \renewcommand{\tablename}{表}
 %---------------------------------------------------------------------
-%	摘要设置
+%    摘要设置
 %---------------------------------------------------------------------
-%\renewcommand{\abstractname}{摘要}
 \newcommand{\enabstractname}{ABSTRACT}
 \newcommand{\cnabstractname}{内\quad 容\quad 摘\quad 要}
-\newenvironment{enabstract}{%
-  \par\small
-  \noindent\mbox{}\hfill{{\zihao{3}\selectfont 
-  \textbf{\enabstractname}%
-  }}\hfill\mbox{}\par
-  }{\par}
 \newenvironment{cnabstract}{%
-  \par\small
-  \noindent\mbox{}\hfill{\songti \bfseries \zihao{3} \cnabstractname}\hfill\mbox{}\par
-  }{\par}
+    \begin{center}
+        \songti \bfseries \LARGE \cnabstractname \vspace{12bp}
+    \end{center}
+    \setlength{\parindent}{2em}
+}{%
+    \par \vspace{12bp}
+}
 
+\newenvironment{enabstract}{%
+    \begin{center}
+        \selectfont \bfseries \LARGE \enabstractname \vspace{10bp}
+    \end{center}
+    \setlength{\parindent}{2em}
+}{%
+    \par % \vspace{22bp}
+}
 %---------------------------------------------------------------------
-%	目录页设置
+%    目录页设置
 %---------------------------------------------------------------------
-%\renewcommand{\contentsname}{\zihao{-3} 目\quad 录}
 \setcounter{tocdepth}{1}
-\renewcommand{\contentsname}{\zihao{3}\bfseries\centering{目$\quad$录}}
-\titlecontents{chapter}[0em]{\songti\zihao{4}\bfseries}{\thecontentslabel\ }{}
-{\hspace{.5em}\titlerule*[4pt]{$\cdot$}\contentspage}
-\titlecontents{section}[2em]{\vspace{0.1\baselineskip}\songti\zihao{4}}{\thecontentslabel\ }{}
-{\hspace{.5em}\titlerule*[4pt]{$\cdot$}\contentspage}
-%\titlecontents{subsection}[4em]{\vspace{0.1\baselineskip}\songti\zihao{-4}}{\thecontentslabel\ }{}
-%{\hspace{.5em}\titlerule*[4pt]{$\cdot$}\contentspage}
+\renewcommand{\contentsname}{\LARGE\bfseries\centering{目\hspace{2em}录}}
+\titlecontents{chapter}[0em]{\songti\large\bfseries}{\thecontentslabel}{}
+{\hspace{.5em}\titlerule*[4bp]{$\cdot$}\contentspage}
+\titlecontents{section}[2em]{\songti\large}{\thecontentslabel}{}
+{\hspace{.5em}\titlerule*[4bp]{$\cdot$}\contentspage}
+%\titlecontents{subsection}[4em]{\vspace{0.1\baselineskip}\songti\normalsize}{\thecontentslabel\ }{}
+%{\hspace{.5em}\titlerule*[4bp]{$\cdot$}\contentspage}
 
 %---------------------------------------------------------------------
-%	文档开始
+%    文档开始
 %---------------------------------------------------------------------
 \begin{document}
-\setmainfont[AutoFakeBold = {2.17}]{宋体}
 %---------------------------------------------------------------------
-%	封面
+%    封面
 %---------------------------------------------------------------------
 \begin{titlepage}
     \begin{center}
         \includegraphics[width=0.7\textwidth]{figure/zhongcai.png}\\
         \vspace{8mm}
-        \textbf{\zihao{-0}\songti{本科生毕业论文（设计）}}\\\vspace{25mm}
-        \textbf{\zihao{2}{\heiti\textbf{\MYTITLE}}}\\[0.8cm]
-        \vspace{50mm}
-        % \vspace{\fill}
-        % \setlength{\extrarowheight}{3mm}
-        {\songti\zihao{3}
-            \begin{tabular}{rp{8.2cm}<{\centering}}
-                % \specialrule{0em}{30pt}
-                {\makebox[4\ccwd][s]{学生姓名：}}    & \underline{\makebox[8cm]{\MYNAME}}     \\[10pt]
-                {\makebox[4\ccwd][s]{学\qquad 号：}}    & \underline{\makebox[8cm]{\MYID}}       \\[10pt]
-                {\makebox[4\ccwd][s]{学\qquad 院：}}    & \underline{\makebox[8cm]{\MYSCHOOL}}     \\[10pt]
-                {\makebox[4\ccwd][s]{专\qquad 业：}}    & \underline{\makebox[8cm]{\MYMAJOR}}    \\[10pt]
-                {\makebox[4\ccwd][s]{指导教师：}}       & \underline{\makebox[8cm]{\MYADVISOR}}  \\[10pt]
-                {\makebox[4\ccwd][s]{日\qquad 期：}}    & \underline{\makebox[8cm]{\MYDATE}}            \\[10pt]
+        \textbf{\fontsize{36bp}{17bp}\songti{本科生毕业论文（设计）}}\\\vspace{89bp}
+        \textbf{\fontsize{22bp}{17bp} {\heiti \textbf{\MYTITLE}}}\\ % 论文大标题为2号
+        \vspace{103bp}
+        {\songti\LARGE
+            \begin{tabular}{rp{6.2cm}<{\centering}}
+                {\makebox[4\ccwd][s]{学生姓名：}}            & \underline{\makebox[6cm]{\MYNAME}}    \\[9bp]
+                {\makebox[4\ccwd][s]{学\hspace{2em} 号：}} & \underline{\makebox[6cm]{\MYID}}      \\[9bp]
+                {\makebox[4\ccwd][s]{学\hspace{2em} 院：}} & \underline{\makebox[6cm]{\MYSCHOOL}}  \\[9bp]
+                {\makebox[4\ccwd][s]{专\hspace{2em} 业：}} & \underline{\makebox[6cm]{\MYMAJOR}}   \\[9bp]
+                {\makebox[4\ccwd][s]{指导教师：}}            & \underline{\makebox[6cm]{\MYADVISOR}} \\[9bp]
+                {\makebox[4\ccwd][s]{日\hspace{2em} 期：}} & \underline{\makebox[6cm]{\MYDATE}}    \\[9bp]
             \end{tabular}
-        }\\[2cm]
+        }\\
     \end{center}
 \end{titlepage}
 %---------------------------------------------------------------------
-%  摘要页
+%    摘要页
 %---------------------------------------------------------------------
 \setcounter{page}{1}
 \thispagestyle{plain}
@@ -218,55 +304,49 @@
 \newpage
 
 %---------------------------------------------------------------------
-%  目录页
+%    目录页
 %---------------------------------------------------------------------
 \thispagestyle{plain}
 \setcounter{page}{1}
-\begin{spacing}{1.8333} % TODO: 这个行距可能有问题
 \tableofcontents % 生成目录
-\end{spacing}
 \newpage
 %---------------------------------------------------------------------
-%  引言
+%    引言
 %---------------------------------------------------------------------
 \begin{center}
-    \textbf{\zihao{-3}{\MYTITLE}}
-    \\[12pt]
+    \textbf{\Large{\MYTITLE}}
+    \\[22bp]
 \end{center}
-\thispagestyle{plain}
 \setcounter{page}{1}
 
 \input{chapter/introduction.tex}
 %---------------------------------------------------------------------
-%  正文
+%    正文
 %---------------------------------------------------------------------
 \input{chapter/chapter1.tex}
 \input{chapter/chapter2.tex}
 \input{chapter/chapter3.tex}
 %---------------------------------------------------------------------
-%  其他
+%    其他
 %---------------------------------------------------------------------
-\vspace{12pt}
 \printbibliography
 \addcontentsline{toc}{chapter}{参考文献}
 \newpage
 \chapter*{中央财经大学本科毕业论文（设计）原创性声明}
 \addcontentsline{toc}{chapter}{中央财经大学本科毕业论文（设计）原创性声明}
-\vspace{1mm}
-本人郑重声明：所提交的毕业论文（设计）《\MYTITLE》，
-是本人在指导老师的指导下独立进行研究工作所取得的成果。
-除文中已经注明引用的内容外，不含任何其他个人或集体已经发表或撰写过的作品成果，
-不存在购买、由他人代写、剽窃和伪造数据等作假行为。
-对本文研究/设计做出重要贡献的个人和集体，均已在文中以明确方式标明。
-本人完全意识到本声明的法律结果，如违反有关规定或上述声明，愿意承担由此产生的一切后果。
-\\[50pt]
-作者签名：\hfill 年 \quad 月 \quad 日\\
+本人郑重声明：所提交的毕业论文（设计）《\MYTITLE》，是本人在指导老师的指导下独立进行研究工作所取得的成果。除文中已经注明引用的内容外，不含任何其他个人或集体已经发表或撰写过的作品成果，不存在购买、由他人代写、剽窃和伪造数据等作假行为。对本文研究/设计做出重要贡献的个人和集体，均已在文中以明确方式标明。本人完全意识到本声明的法律结果，如违反有关规定或上述声明，愿意承担由此产生的一切后果。
+
+\vspace{66bp}
+作者签名：\hfill 2024年4月10日
+
 \newpage
 \chapter*{致谢}
+
 \addcontentsline{toc}{chapter}{致谢}
 \input{chapter/acknowledgement.tex}
 \newpage
 \chapter*{附录}
+
 \addcontentsline{toc}{chapter}{附录}
 \input{chapter/appendix.tex}
 \end{document}
