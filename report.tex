@@ -15,11 +15,13 @@
 \usepackage{anyfontsize} % 支持任意字号
 \usepackage{comment} % 添加注释环境
 \usepackage{setspace} % 设置行间距
+\usepackage{microtype} % 优化字距
 \usepackage{fancyhdr} % 自定义页眉页脚
 \usepackage{graphicx} % 插入图像
 \usepackage{wrapfig} % 文字环绕图像
 \usepackage{subcaption} % 替代过时的 subfigure，支持子图与子标题
 \usepackage{float} % 浮动体控制
+\usepackage{verbatimbox} % 提供更多的 verbatim 环境
 \usepackage{array} % 增强表格功能
 \usepackage{titlesec} % 修改章节标题样式
 \usepackage{titletoc} % 修改目录样式
@@ -44,6 +46,8 @@
 \renewcommand {\thetable} {\arabic{table}} % 表格编号为阿拉伯数字
 \renewcommand {\thefigure} {\arabic{figure}} % 图形编号为阿拉伯数字
 \usepackage{amsfonts} % 数学字体
+\usepackage{tikz} % tikz绘图
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric}
 \usepackage{lipsum} % 生成随机文本
 \usepackage{longtable, booktabs} % 更优美的表格
 \usepackage{paralist} % 更灵活的列表(customisable lists)
@@ -58,7 +62,7 @@
 %---------------------------------------------------------------------
 %     页边距设置
 %---------------------------------------------------------------------
-\geometry{a4paper,left=2.5cm,right=2.5cm,top=2.54cm,bottom=2.54cm, xetex}
+\geometry{a4paper,left=2.5cm,right=2.5cm,top=2.54cm,bottom=2.54cm,xetex}
 %---------------------------------------------------------------------
 %     脚注设置
 %---------------------------------------------------------------------
@@ -140,8 +144,8 @@
 %---------------------------------------------------------------------
 %    图表上下行间距设置
 %---------------------------------------------------------------------
-\captionsetup[table]{position=above,belowskip=17bp}
-\captionsetup[figure]{position=below,belowskip=17bp}
+\captionsetup[table]{position=above, aboveskip=2bp, belowskip=17bp}
+\captionsetup[figure]{position=below, aboveskip=5bp, belowskip=17bp}
 %---------------------------------------------------------------------
 %    图表顺序标号，不分章节
 %---------------------------------------------------------------------
@@ -160,19 +164,19 @@
 \lhead{}
 \rhead{}
 % 页眉去除横线
-% \renewcommand{\headrulewidth}{0bp}
+\renewcommand{\headrulewidth}{0bp}
 % \cfoot{\thepage \\ \textcolor{red}{请注意格式问题可能会导致拒绝答辩。以任何形式采用该模板意味着您已承认：使用该模板而引发的一切负面或正面后果与任何你以外的人都没有任何关系。}}
 
 %---------------------------------------------------------------------
 %    调整字体
 %---------------------------------------------------------------------
-\setCJKmainfont{simsun.ttc}[AutoFakeBold=2.17]
-\setCJKsansfont{simhei.ttf}[AutoFakeBold=2.17]
-\setCJKmonofont{simfang.ttf}
-\setCJKfamilyfont{zhsong}{simsun.ttc}[AutoFakeBold=2.17]
-\setCJKfamilyfont{zhhei}{simhei.ttf}[AutoFakeBold=2.17]
-\setCJKfamilyfont{zhkai}{simkai.ttf}
-\setCJKfamilyfont{zhfs}{simfang.ttf}
+\setCJKmainfont[AutoFakeBold=2.17, AutoFakeSlant]{SimSun}
+\setCJKsansfont[AutoFakeBold=2.17, AutoFakeSlant]{SimHei}
+\setCJKmonofont{FangSong}
+\setCJKfamilyfont{zhsong}[AutoFakeBold=2.17, AutoFakeSlant]{SimSun}
+\setCJKfamilyfont{zhhei}[AutoFakeBold=2.17, AutoFakeSlant]{SimHei}
+\setCJKfamilyfont{zhkai}{KaiTi}
+\setCJKfamilyfont{zhfs}{FangSong}
 \renewcommand*{\songti}{\CJKfamily{zhsong}}
 \renewcommand*{\heiti}{\CJKfamily{zhhei}}
 \renewcommand*{\kaishu}{\CJKfamily{zhkai}}
@@ -230,8 +234,8 @@
 \titleformat{\subsection}{\normalsize\songti\mdseries}{\hspace{2em}\arabic{subsection}.$\ $}{0em}{}
 
 \titlespacing{\chapter}{0bp}{22bp}{22bp} % 一级标题前后隔一行小四
-\titlespacing{\section}{0bp}{0bp}{*0}
-\titlespacing{\subsection}{0bp}{0bp}{*0}
+\titlespacing{\section}{0bp}{0bp}{0bp}
+\titlespacing{\subsection}{0bp}{0bp}{0bp}
 
 \renewcommand{\figurename}{图}
 \renewcommand{\tablename}{表}
@@ -276,25 +280,7 @@
 %---------------------------------------------------------------------
 %    封面
 %---------------------------------------------------------------------
-\begin{titlepage}
-    \begin{center}
-        \includegraphics[width=0.7\textwidth]{figure/zhongcai.png}\\
-        \vspace{8mm}
-        \textbf{\fontsize{36bp}{17bp}\songti{本科生毕业论文（设计）}}\\\vspace{89bp}
-        \textbf{\fontsize{22bp}{17bp} {\heiti \textbf{\MYTITLE}}}\\ % 论文大标题为2号
-        \vspace{103bp}
-        {\songti\LARGE
-            \begin{tabular}{rp{6.2cm}<{\centering}}
-                {\makebox[4\ccwd][s]{学生姓名：}}            & \underline{\makebox[6cm]{\MYNAME}}    \\[9bp]
-                {\makebox[4\ccwd][s]{学\hspace{2em} 号：}} & \underline{\makebox[6cm]{\MYID}}      \\[9bp]
-                {\makebox[4\ccwd][s]{学\hspace{2em} 院：}} & \underline{\makebox[6cm]{\MYSCHOOL}}  \\[9bp]
-                {\makebox[4\ccwd][s]{专\hspace{2em} 业：}} & \underline{\makebox[6cm]{\MYMAJOR}}   \\[9bp]
-                {\makebox[4\ccwd][s]{指导教师：}}            & \underline{\makebox[6cm]{\MYADVISOR}} \\[9bp]
-                {\makebox[4\ccwd][s]{日\hspace{2em} 期：}} & \underline{\makebox[6cm]{\MYDATE}}    \\[9bp]
-            \end{tabular}
-        }\\
-    \end{center}
-\end{titlepage}
+\input{chapter/titlepage.tex}
 %---------------------------------------------------------------------
 %    摘要页
 %---------------------------------------------------------------------
@@ -314,8 +300,8 @@
 %    引言
 %---------------------------------------------------------------------
 \begin{center}
-    \textbf{\Large{\MYTITLE}}
-    \\[22bp]
+    \textbf{\Large\MYTITLE}
+    \par\vspace{17bp}
 \end{center}
 \setcounter{page}{1}
 
@@ -332,22 +318,19 @@
 \printbibliography
 \addcontentsline{toc}{chapter}{参考文献}
 \newpage
+
 \chapter*{中央财经大学本科毕业论文（设计）原创性声明}
 \addcontentsline{toc}{chapter}{中央财经大学本科毕业论文（设计）原创性声明}
-
-本人郑重声明：所提交的毕业论文（设计）《\MYTITLE》，是本人在指导老师的指导下独立进行研究工作所取得的成果。除文中已经注明引用的内容外，不含任何其他个人或集体已经发表或撰写过的作品成果，不存在购买、由他人代写、剽窃和伪造数据等作假行为。对本文研究/设计做出重要贡献的个人和集体，均已在文中以明确方式标明。本人完全意识到本声明的法律结果，如违反有关规定或上述声明，愿意承担由此产生的一切后果。
-
-\vspace{66bp}
-作者签名：\hfill 2024年4月10日
-
+\input{chapter/declaration.tex}
 \newpage
-\chapter*{致谢}
 
+\chapter*{致谢}
 \addcontentsline{toc}{chapter}{致谢}
 \input{chapter/acknowledgement.tex}
 \newpage
-\chapter*{附录}
 
+\chapter*{附录}
 \addcontentsline{toc}{chapter}{附录}
 \input{chapter/appendix.tex}
+
 \end{document}
