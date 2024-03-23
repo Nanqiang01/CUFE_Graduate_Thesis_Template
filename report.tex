@@ -1,70 +1,59 @@
+\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
 %---------------------------------------------------------------------
 %	 个人信息
 %---------------------------------------------------------------------
 \input{chapter/chacterize.tex}
 %---------------------------------------------------------------------
-%    文档类型
+% 文档类型
 %---------------------------------------------------------------------
-\documentclass[a4paper, 12bp, utf8]{report}
+\documentclass[a4paper, 12bp, UTF8]{report}
 %---------------------------------------------------------------------
-%    导入宏包
+% 导入宏包
 %---------------------------------------------------------------------
 \usepackage{geometry} % 改变页面尺寸
 \usepackage{ctex} % 中文支持
-\usepackage{xeCJK} % 支持CJK字体，适用于中文、日文和韩文
 \usepackage{anyfontsize} % 支持任意字号
 \usepackage{comment} % 添加注释环境
 \usepackage{setspace} % 设置行间距
 \usepackage{microtype} % 优化字距
 \usepackage{fancyhdr} % 自定义页眉页脚
+\usepackage[ruled]{manyfoot} % 多个脚注
 \usepackage{graphicx} % 插入图像
 \usepackage{wrapfig} % 文字环绕图像
 \usepackage{subcaption} % 替代过时的 subfigure，支持子图与子标题
 \usepackage{float} % 浮动体控制
+\usepackage{enumitem} % 列表设置
 \usepackage{verbatimbox} % 提供更多的 verbatim 环境
-\usepackage{array} % 增强表格功能
+\usepackage{tabularx} % 增强表格功能
 \usepackage{titlesec} % 修改章节标题样式
 \usepackage{titletoc} % 修改目录样式
 \usepackage[titletoc]{appendix} % 附录设置
-\usepackage{listings, color} % 插入代码
-\usepackage{xcolor} % 代码高亮
+\usepackage{listings, color, xcolor} % 插入代码
 \usepackage{algpseudocode} % 代替过时的 algorithmic，用于编写伪代码
 \usepackage{algorithm} % 插入算法伪代码环境
 \usepackage{scrextend} % KOMA-Script 扩展
 \usepackage[perpage]{footmisc} % 脚注相关设置
 \usepackage{pifont} % 提供圆圈数字等特殊字符
 \usepackage[T1]{fontenc} % 字体编码为 T1
-\usepackage{inputenc} % 输入编码为 utf8
-\usepackage{fontspec} % 西文字体设置
 \usepackage[backend=biber, style=gb7714-2015, defernumbers=true]{biblatex} % 参考文献管理
-\usepackage{amsmath} % 数学公式
-\usepackage{amsthm} % 定理环境
-\newtheorem{theorem}{定理}
-\newtheorem{definition}{定义}
-\newtheorem{corollary}{推论}
-\newtheorem{example}{例}
-\renewcommand {\thetable} {\arabic{table}} % 表格编号为阿拉伯数字
-\renewcommand {\thefigure} {\arabic{figure}} % 图形编号为阿拉伯数字
-\usepackage{amsfonts} % 数学字体
+\usepackage{amsmath, amsthm, amsfonts} % 数学环境
 \usepackage{tikz} % tikz绘图
-\usetikzlibrary{arrows.meta, positioning, shapes.geometric}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric} % tikz绘图库
 \usepackage{lipsum} % 生成随机文本
-\usepackage{longtable, booktabs} % 更优美的表格
-\usepackage{paralist} % 更灵活的列表(customisable lists)
+\usepackage{tabularx, longtable, booktabs} % 更优美的表格
 \usepackage{verbatim} % 更好的 verbatim 环境
 \usepackage{cases} % 公式组环境
 \usepackage{multirow} % 在表格中跨多行合并单元格
-\usepackage{tabularx, booktabs} % 提供额外的表格功能
 \usepackage{zhnumber} % 章节编号为中文
 \usepackage{hyperref} % 超链接支持
 \usepackage[font=small]{caption} % 设置图表标题为五号
 \usepackage{chngcntr} % 允许改变计数器的前缀
 %---------------------------------------------------------------------
-%     页边距设置
+%  页边距设置
 %---------------------------------------------------------------------
-\geometry{a4paper,left=2.5cm,right=2.5cm,top=2.54cm,bottom=2.54cm,xetex}
+\geometry{left=2.5cm, right=2.5cm, top=2.54cm, bottom=2.54cm, xetex}
 %---------------------------------------------------------------------
-%     脚注设置
+%  脚注设置
 %---------------------------------------------------------------------
 \renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}}
 % 脚注字体设置为small
@@ -76,22 +65,22 @@
     \hrule width 0.25\paperwidth height 1bp
     \kern 2bp
 }
+\setlength{\footnotesep}{12bp}
 %---------------------------------------------------------------------
-%     参考文献设置
+%  参考文献设置
 %---------------------------------------------------------------------
 \renewcommand*{\bibfont}{\normalsize}
-\addbibresource{references/bibtest.bib}
-\renewcommand{\bibname}{参考文献}
-%---------------------------------------------------------------------
-%	引用文献设置为上标
-%---------------------------------------------------------------------
+\addbibresource{references/mybib.bib}
+% 引用文献设置为上标
 \begin{comment}
         \makeatletter
         \def\@cite#1#2{\textsuperscript{[{#1\if@tempswa , #2\fi}]}}
         \makeatother
 \end{comment}
+% 参考文献间距
+\setlength{\bibitemsep}{0bp}
 %---------------------------------------------------------------------
-%     附录代码设置
+%  附录代码设置
 %---------------------------------------------------------------------
 % Python highlights color settings
 \definecolor{pBasic}{RGB}{248, 248, 242}      % 默认
@@ -103,12 +92,11 @@
 \definecolor{pNumber}{RGB}{128,128,128}       % 灰色
 \lstdefinestyle{python}{
     language=python,               % 语言
-    xleftmargin=25pt,
-    xrightmargin=15pt,
-    frame=tlbr,framesep=4pt,framerule=0pt, % 边框设置
+    xleftmargin=25bp,
+    xrightmargin=15bp,
+    frame=tlbr,framesep=4bp,framerule=0bp, % 边框设置
     % frame=shadowbox,rulesepcolor=\color{red!20!green!20!blue!20}, % 边框设置
-    basicstyle=\normalsize\ttfamily,          % 代码字体、大小
-    basicstyle=\footnotesize\fontspec{Consolas},
+    basicstyle=\singlespacing \small \fontspec{Consolas},          % 代码字体、大小、行间距
     keywordstyle=\color{pKeyword},       % 关键字颜色
     stringstyle=\color{pString},         % 字符串颜色
     commentstyle=\color{pComment},       % 注释颜色
@@ -121,33 +109,29 @@
     tabsize=4,                           % 设置默认缩进空格数
     captionpos=t,                        % 设置caption在顶部
     breaklines=true,                     % 自动换行
-    numberstyle=\tiny\color{pNumber},
+    numberstyle=\small \color{pNumber},
     numbers=left,                        % 行号位置
     stepnumber=1,                        % 行号计数间隔
     %numbersep=5pt,                      % 行号与代码间距
 }
 %---------------------------------------------------------------------
-%    超链接设置
+% 超链接设置
 %---------------------------------------------------------------------
 \hypersetup{colorlinks,linkcolor=black,anchorcolor=black,citecolor=black, pdfstartview=FitH,bookmarksnumbered=true,bookmarksopen=true,} % 设置引用样式
 \XeTeXlinebreaklocale "zh"
 \XeTeXlinebreakskip = 0bp plus 1bp minus 0.1bp % 微调 XeTeX 的行间距
 %---------------------------------------------------------------------
-%    列表间距设置
+% 列表格式设置
 %---------------------------------------------------------------------
-\let\enumerate\compactenum
-\let\endenumerate\endcompactenum
-\let\itemize\compactitem
-\let\enditemize\endcompactitem
-\let\description\compactdesc
-\let\enddescription\endcompactdesc
+\setlist[enumerate]{left=2em, labelindent=2em, label=(\arabic*), itemsep=0bp, topsep=0bp, partopsep=0bp, parsep=\parskip}
+\setlist[itemize]{left=2em, labelindent=2em, itemsep=0bp, topsep=0bp, partopsep=0bp, parsep=\parskip}
 %---------------------------------------------------------------------
-%    图表上下行间距设置
+% 图表上下行间距设置
 %---------------------------------------------------------------------
 \captionsetup[table]{position=above, aboveskip=2bp, belowskip=17bp}
 \captionsetup[figure]{position=below, aboveskip=5bp, belowskip=17bp}
 %---------------------------------------------------------------------
-%    图表顺序标号，不分章节
+% 图表顺序标号，不分章节
 %---------------------------------------------------------------------
 \counterwithout{table}{chapter}
 \counterwithout{table}{section}
@@ -157,18 +141,17 @@
 \counterwithout{equation}{section}
 \titleclass{\chapter}{straight}%禁止chapter换页
 %---------------------------------------------------------------------
-%    页眉页脚设置
+% 页眉页脚设置
 %---------------------------------------------------------------------
 \pagestyle{fancy}
 \fancyhead[C]{\small\MYTITLE}
 \lhead{}
 \rhead{}
 % 页眉去除横线
-\renewcommand{\headrulewidth}{0bp}
+% \renewcommand{\headrulewidth}{0bp}
 % \cfoot{\thepage \\ \textcolor{red}{请注意格式问题可能会导致拒绝答辩。以任何形式采用该模板意味着您已承认：使用该模板而引发的一切负面或正面后果与任何你以外的人都没有任何关系。}}
-
 %---------------------------------------------------------------------
-%    调整字体
+% 调整字体
 %---------------------------------------------------------------------
 \setCJKmainfont[AutoFakeBold=2.17, AutoFakeSlant]{SimSun}
 \setCJKsansfont[AutoFakeBold=2.17, AutoFakeSlant]{SimHei}
@@ -224,23 +207,34 @@
     \let\@listi\@listI}
 \makeatother
 %---------------------------------------------------------------------
-%    标题格式设置
+% 标题格式设置
 %---------------------------------------------------------------------
+\setcounter{secnumdepth}{3}
+\renewcommand\thechapter{\zhnum{chapter}、}
 \renewcommand\thesection{（\zhnum{section}）}
-\renewcommand \thesubsection {\arabic{subsection}.}
-\renewcommand \thechapter {\zhnum{chapter}、}
-\titleformat{\chapter}{\centering\large\songti\bfseries}{\chinese{chapter}、}{0em}{}
-\titleformat{\section}{\normalsize\songti\bfseries}{\hspace{2em}（\chinese{section}）}{0em}{}
-\titleformat{\subsection}{\normalsize\songti\mdseries}{\hspace{2em}\arabic{subsection}.$\ $}{0em}{}
+\renewcommand\thesubsection{\arabic{subsection}.$\ $}
+\renewcommand\thesubsubsection{（\arabic{subsubsection}）}
+\renewcommand {\thetable} {\arabic{table}}
+\renewcommand {\thefigure} {\arabic{figure}}
+
+\titleformat{\chapter}{\centering\large\songti\bfseries}{\thechapter}{0em}{}
+\titleformat{\section}{\normalsize\songti\bfseries}{\hspace{2em}\thesection}{0em}{}
+\titleformat{\subsection}{\normalsize\songti\mdseries}{\hspace{2em}\thesubsection}{0em}{}
+\titleformat{\subsubsection}[runin]{\normalsize\songti\mdseries}{\hspace{2em}\thesubsubsection}{0em}{}[：\qquad]
 
 \titlespacing{\chapter}{0bp}{22bp}{22bp} % 一级标题前后隔一行小四
 \titlespacing{\section}{0bp}{0bp}{0bp}
 \titlespacing{\subsection}{0bp}{0bp}{0bp}
+\titlespacing{\subsubsection}{0bp}{0bp}{0bp}
 
 \renewcommand{\figurename}{图}
 \renewcommand{\tablename}{表}
+\newtheorem{theorem}{定理}
+\newtheorem{definition}{定义}
+\newtheorem{corollary}{推论}
+\newtheorem{example}{例}
 %---------------------------------------------------------------------
-%    摘要设置
+% 摘要设置
 %---------------------------------------------------------------------
 \newcommand{\enabstractname}{ABSTRACT}
 \newcommand{\cnabstractname}{内\quad 容\quad 摘\quad 要}
@@ -262,42 +256,36 @@
     \par % \vspace{22bp}
 }
 %---------------------------------------------------------------------
-%    目录页设置
+% 目录页设置
 %---------------------------------------------------------------------
 \setcounter{tocdepth}{1}
 \renewcommand{\contentsname}{\LARGE\bfseries\centering{目\hspace{2em}录}}
-\titlecontents{chapter}[0em]{\songti\large\bfseries}{\thecontentslabel}{}
-{\hspace{.5em}\titlerule*[4bp]{$\cdot$}\contentspage}
-\titlecontents{section}[2em]{\songti\large}{\thecontentslabel}{}
-{\hspace{.5em}\titlerule*[4bp]{$\cdot$}\contentspage}
-%\titlecontents{subsection}[4em]{\vspace{0.1\baselineskip}\songti\normalsize}{\thecontentslabel\ }{}
-%{\hspace{.5em}\titlerule*[4bp]{$\cdot$}\contentspage}
-
+\titlecontents{chapter}[0em]{\large\songti\bfseries}{\thecontentslabel}{}{\hspace{.5em}\titlerule*[4bp]{$\cdot$}\contentspage}
+\titlecontents{section}[2em]{\normalsize\songti\large}{\thecontentslabel}{}{\hspace{.5em}\titlerule*[4bp]{$\cdot$}\contentspage}
 %---------------------------------------------------------------------
-%    文档开始
+% 文档开始
 %---------------------------------------------------------------------
 \begin{document}
 %---------------------------------------------------------------------
-%    封面
+% 封面
 %---------------------------------------------------------------------
 \input{chapter/titlepage.tex}
 %---------------------------------------------------------------------
-%    摘要页
+% 摘要页
 %---------------------------------------------------------------------
 \setcounter{page}{1}
 \thispagestyle{plain}
 \input{chapter/abstract.tex}
 \newpage
-
 %---------------------------------------------------------------------
-%    目录页
+% 目录页
 %---------------------------------------------------------------------
 \thispagestyle{plain}
 \setcounter{page}{1}
 \tableofcontents % 生成目录
 \newpage
 %---------------------------------------------------------------------
-%    引言
+% 引言
 %---------------------------------------------------------------------
 \begin{center}
     \textbf{\Large\MYTITLE}
@@ -307,18 +295,20 @@
 
 \input{chapter/introduction.tex}
 %---------------------------------------------------------------------
-%    正文
+% 正文
 %---------------------------------------------------------------------
 \input{chapter/chapter1.tex}
 \input{chapter/chapter2.tex}
 \input{chapter/chapter3.tex}
 %---------------------------------------------------------------------
-%    其他
+% 参考文献
 %---------------------------------------------------------------------
 \printbibliography
 \addcontentsline{toc}{chapter}{参考文献}
 \newpage
-
+%---------------------------------------------------------------------
+% 其他
+%---------------------------------------------------------------------
 \chapter*{中央财经大学本科毕业论文（设计）原创性声明}
 \addcontentsline{toc}{chapter}{中央财经大学本科毕业论文（设计）原创性声明}
 \input{chapter/declaration.tex}
@@ -328,7 +318,9 @@
 \addcontentsline{toc}{chapter}{致谢}
 \input{chapter/acknowledgement.tex}
 \newpage
-
+%---------------------------------------------------------------------
+% 附录
+%---------------------------------------------------------------------
 \chapter*{附录}
 \addcontentsline{toc}{chapter}{附录}
 \input{chapter/appendix.tex}
