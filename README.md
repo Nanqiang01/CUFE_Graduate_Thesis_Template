@@ -15,7 +15,7 @@ Powered by GPT-4
 
 # 使用说明
 
-建议采用编译链：xelatexmk->biber->xelatexmk->xelatexmk
+建议采用编译链：latexmk (xelatex)（推荐）、xelatex->biber->xelatex->xelatex
 
 模板采用的宏包并不复杂，但建议编译环境：TeXLive2024或MikTex
 
@@ -24,6 +24,7 @@ Powered by GPT-4
 # 注意事项
 1. 表格字号需要手动设置\small
 2. 图表部分间隔需手动加间距，具体见代码
+3. 公式环境equation需要和正文隔行，align不能隔行（否则间距不对）
 
 # 参考资源
 
