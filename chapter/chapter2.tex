@@ -42,7 +42,7 @@
 
 胡天八月即飞雪
 
-交叉引用示例:表\ref{hhh}
+交叉引用示例:表~\ref{hhh}~
 \begin{equation*}
     Ave\_income = \beta_0 + \beta_{1}Ave\_age + \beta_{2}Ave\_edu + \beta_{3}hgender + \beta_{4}hccp + \beta_{5}worker\_ratio + \epsilon
 \end{equation*}
@@ -55,8 +55,8 @@
     \small
     \caption{手动插入表格示例}
     \centering
-    \begin{tabular}{lcccc}
-        \toprule[1.5bp]
+    \begin{tabularx}{\textwidth}{X >{\centering\arraybackslash}X >{\centering\arraybackslash}X >{\centering\arraybackslash}X >{\centering\arraybackslash}X}
+        \toprule[1.0bp]
         variable & mean & sd   & min   & max   \\
         \midrule[0.75bp]
         SR1      & 0.60 & 0.52 & -5.00 & 1.00  \\
@@ -70,8 +70,8 @@
         pension  & 0.47 & 0.34 & 0.00  & 1.00  \\
         heasec   & 0.57 & 0.30 & 0.00  & 1.00  \\
         unemsec  & 0.29 & 0.35 & 0.00  & 1.00  \\
-        \bottomrule[1.5bp]
-    \end{tabular}
+        \bottomrule[1.0bp]
+    \end{tabularx}
     \label{hhh}
-    \vspace{22bp}
+    \vspace{4bp}
 \end{table}
