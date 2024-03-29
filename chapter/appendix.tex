@@ -1,18 +1,18 @@
-插入代码示例：
+\chapter{附录一：Python代码}
 
-\begin{lstlisting}[style=python,title={Python code}] 
-#PythonDraw.py
-import turtle as t
-t.setup(650, 350, 200, 200)
-t.penup()
-t.fd(-250)
-t.pendown()
-t.pensize(25)
-t.pencolor("purple color")
-t.seth(-40)
-for i in range(4):
-    t.circle(40, 80)
-    t.circle(-40, 80)
+\begin{lstlisting}[style=python]
+    #PythonDraw.py
+    import turtle as t
+    t.setup(650, 350, 200, 200)
+    t.penup()
+    t.fd(-250)
+    t.pendown()
+    t.pensize(25)
+    t.pencolor("purple color")
+    t.seth(-40)
+    for i in range(4):
+        t.circle(40, 80)
+        t.circle(-40, 80)
     t.circle(40, 80/2)
     t.fd(40)
     t.circle(16, 180)
