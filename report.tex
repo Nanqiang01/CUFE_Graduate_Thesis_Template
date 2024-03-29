@@ -1,4 +1,3 @@
-\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本生成的时候最好把这句话注释掉
 %---------------------------------------------------------------------
 %	 个人信息
 %---------------------------------------------------------------------
@@ -36,7 +35,7 @@
 \usepackage{pifont} % 提供圆圈数字等特殊字符
 \usepackage[T1]{fontenc} % 字体编码为 T1
 \usepackage[backend=biber, style=gb7714-2015, defernumbers=true]{biblatex} % 参考文献管理
-\usepackage{amsmath, amsthm, amsfonts} % 数学环境
+\usepackage{amsmath, amssymb, amsthm, amsfonts, mathtools} % 数学环境
 \usepackage{tikz} % tikz绘图
 \usetikzlibrary{arrows.meta, positioning, shapes.geometric} % tikz绘图库
 \usepackage{lipsum} % 生成随机文本
@@ -46,12 +45,12 @@
 \usepackage{multirow} % 在表格中跨多行合并单元格
 \usepackage{zhnumber} % 章节编号为中文
 \usepackage{hyperref} % 超链接支持
-\usepackage[font=small]{caption} % 设置图表标题为五号
+\usepackage[labelsep=quad, singlelinecheck=false]{caption} % 设置图表标题为五号
 \usepackage{chngcntr} % 允许改变计数器的前缀
 %---------------------------------------------------------------------
 %  页边距设置
 %---------------------------------------------------------------------
-\geometry{left=2.5cm, right=2.5cm, top=2.54cm, bottom=2.54cm, xetex}
+\geometry{a4paper, left=2.5cm, right=2.5cm, top=2.54cm, bottom=2.54cm, xetex}
 %---------------------------------------------------------------------
 %  脚注设置
 %---------------------------------------------------------------------
@@ -70,7 +69,7 @@
 %  参考文献设置
 %---------------------------------------------------------------------
 \renewcommand*{\bibfont}{\normalsize}
-\addbibresource{references/mybib.bib}
+\addbibresource{references/reference.bib}
 % 引用文献设置为上标
 \begin{comment}
         \makeatletter
@@ -100,7 +99,7 @@
     keywordstyle=\color{pKeyword},       % 关键字颜色
     stringstyle=\color{pString},         % 字符串颜色
     commentstyle=\color{pComment},       % 注释颜色
-    backgroundcolor=\color{pBackground}, % 背景颜色
+    % backgroundcolor=\color{pBackground}, % 背景颜色
     emph={format_string,eff_ana_bf,permute,eff_ana_btr}, % 自定义函数
     emphstyle=\color{pIdentifier},       % 自定义函数颜色
     showspaces=false,                    % 显示空格
@@ -119,17 +118,19 @@
 %---------------------------------------------------------------------
 \hypersetup{colorlinks,linkcolor=black,anchorcolor=black,citecolor=black, pdfstartview=FitH,bookmarksnumbered=true,bookmarksopen=true,} % 设置引用样式
 \XeTeXlinebreaklocale "zh"
-\XeTeXlinebreakskip = 0bp plus 1bp minus 0.1bp % 微调 XeTeX 的行间距
+% \XeTeXlinebreakskip = 0bp plus 1bp minus 0.1bp % 微调 XeTeX 的行间距
 %---------------------------------------------------------------------
 % 列表格式设置
 %---------------------------------------------------------------------
 \setlist[enumerate]{left=2em, labelindent=2em, label=(\arabic*), itemsep=0bp, topsep=0bp, partopsep=0bp, parsep=\parskip}
 \setlist[itemize]{left=2em, labelindent=2em, itemsep=0bp, topsep=0bp, partopsep=0bp, parsep=\parskip}
 %---------------------------------------------------------------------
-% 图表上下行间距设置
+% 图表名设置
 %---------------------------------------------------------------------
-\captionsetup[table]{position=above, aboveskip=2bp, belowskip=17bp}
-\captionsetup[figure]{position=below, aboveskip=5bp, belowskip=17bp}
+\captionsetup[table]{name={表}, justification=raggedright, position=above, aboveskip=0bp, belowskip=17bp}
+\captionsetup[figure]{name={图}, justification=centering, position=below, aboveskip=0bp, belowskip=12bp}
+% 表格行间距设置
+\renewcommand\arraystretch{0.9}
 %---------------------------------------------------------------------
 % 图表顺序标号，不分章节
 %---------------------------------------------------------------------
@@ -141,18 +142,26 @@
 \counterwithout{equation}{section}
 \titleclass{\chapter}{straight}%禁止chapter换页
 %---------------------------------------------------------------------
+% 在目录中添加不带编号的章节
+%---------------------------------------------------------------------
+\makeatletter
+\newcommand\specialchapter{\setcounter{secnumdepth}{-2}}
+\makeatother
+%---------------------------------------------------------------------
 % 页眉页脚设置
 %---------------------------------------------------------------------
 \pagestyle{fancy}
-\fancyhead[C]{\small\MYTITLE}
+% \fancyhead[C]{\small\MYTITLE}
 \lhead{}
 \rhead{}
 % 页眉去除横线
-% \renewcommand{\headrulewidth}{0bp}
+\renewcommand{\headrulewidth}{0bp}
 % \cfoot{\thepage \\ \textcolor{red}{请注意格式问题可能会导致拒绝答辩。以任何形式采用该模板意味着您已承认：使用该模板而引发的一切负面或正面后果与任何你以外的人都没有任何关系。}}
+% \setlength{\headheight}{18bp}
 %---------------------------------------------------------------------
 % 调整字体
 %---------------------------------------------------------------------
+\setmainfont{Times New Roman}
 \setCJKmainfont[AutoFakeBold=2.17, AutoFakeSlant]{SimSun}
 \setCJKsansfont[AutoFakeBold=2.17, AutoFakeSlant]{SimHei}
 \setCJKmonofont{FangSong}
@@ -227,8 +236,6 @@
 \titlespacing{\subsection}{0bp}{0bp}{0bp}
 \titlespacing{\subsubsection}{0bp}{0bp}{0bp}
 
-\renewcommand{\figurename}{图}
-\renewcommand{\tablename}{表}
 \newtheorem{theorem}{定理}
 \newtheorem{definition}{定义}
 \newtheorem{corollary}{推论}
@@ -237,7 +244,7 @@
 % 摘要设置
 %---------------------------------------------------------------------
 \newcommand{\enabstractname}{ABSTRACT}
-\newcommand{\cnabstractname}{内\quad 容\quad 摘\quad 要}
+\newcommand{\cnabstractname}{内\hspace{0.5em}容\hspace{0.5em}摘\hspace{0.5em}要}
 \newenvironment{cnabstract}{%
     \begin{center}
         \songti \bfseries \LARGE \cnabstractname \vspace{12bp}
@@ -259,7 +266,7 @@
 % 目录页设置
 %---------------------------------------------------------------------
 \setcounter{tocdepth}{1}
-\renewcommand{\contentsname}{\LARGE\bfseries\centering{目\hspace{2em}录}}
+\renewcommand{\contentsname}{\LARGE\bfseries\centering{目\hspace{1em}录}}
 \titlecontents{chapter}[0em]{\large\songti\bfseries}{\thecontentslabel}{}{\hspace{.5em}\titlerule*[4bp]{$\cdot$}\contentspage}
 \titlecontents{section}[2em]{\normalsize\songti\large}{\thecontentslabel}{}{\hspace{.5em}\titlerule*[4bp]{$\cdot$}\contentspage}
 %---------------------------------------------------------------------
@@ -275,7 +282,11 @@
 %---------------------------------------------------------------------
 \setcounter{page}{1}
 \thispagestyle{plain}
-\input{chapter/abstract.tex}
+\input{chapter/cnabstract.tex}
+\newpage
+\setcounter{page}{1}
+\thispagestyle{plain}
+\input{chapter/enabstract.tex}
 \newpage
 %---------------------------------------------------------------------
 % 目录页
@@ -285,15 +296,13 @@
 \tableofcontents % 生成目录
 \newpage
 %---------------------------------------------------------------------
-% 引言
+% 大标题
 %---------------------------------------------------------------------
 \begin{center}
     \textbf{\Large\MYTITLE}
-    \par\vspace{17bp}
+    \par \vspace{-10bp}
 \end{center}
 \setcounter{page}{1}
-
-\input{chapter/introduction.tex}
 %---------------------------------------------------------------------
 % 正文
 %---------------------------------------------------------------------
@@ -303,26 +312,26 @@
 %---------------------------------------------------------------------
 % 参考文献
 %---------------------------------------------------------------------
+\specialchapter
 \printbibliography
+\nocite{*} %显示所有文献
 \addcontentsline{toc}{chapter}{参考文献}
 \newpage
 %---------------------------------------------------------------------
 % 其他
 %---------------------------------------------------------------------
-\chapter*{中央财经大学本科毕业论文（设计）原创性声明}
-\addcontentsline{toc}{chapter}{中央财经大学本科毕业论文（设计）原创性声明}
 \input{chapter/declaration.tex}
+\vspace{66bp}
+
+\input{chapter/authorize.tex}
 \newpage
 
-\chapter*{致谢}
-\addcontentsline{toc}{chapter}{致谢}
 \input{chapter/acknowledgement.tex}
 \newpage
 %---------------------------------------------------------------------
 % 附录
 %---------------------------------------------------------------------
-\chapter*{附录}
-\addcontentsline{toc}{chapter}{附录}
 \input{chapter/appendix.tex}
+
 
 \end{document}
