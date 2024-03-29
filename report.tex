@@ -34,7 +34,15 @@
 \usepackage[perpage]{footmisc} % 脚注相关设置
 \usepackage{pifont} % 提供圆圈数字等特殊字符
 \usepackage[T1]{fontenc} % 字体编码为 T1
-\usepackage[backend=biber, style=gb7714-2015, defernumbers=true]{biblatex} % 参考文献管理
+\usepackage[
+    backend=biber,
+    style=gb7714-2015,
+    defernumbers=true,
+    gbnamefmt=lowercase,
+    doi=false,	%显示doi与否
+    url=false,	%显示url与否
+    sorting=none, %以引用顺序编号
+    ]{biblatex} % 参考文献管理
 \usepackage{amsmath, amssymb, amsthm, amsfonts, mathtools} % 数学环境
 \usepackage{tikz} % tikz绘图
 \usetikzlibrary{arrows.meta, positioning, shapes.geometric} % tikz绘图库
