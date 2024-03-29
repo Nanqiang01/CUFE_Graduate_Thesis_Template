@@ -28,6 +28,6 @@ Powered by GPT-4
 
 # 参考资源
 
-1. 格式参考[中央财经大学本科毕业论文材料]((https://jwc.cufe.edu.cn/info/1124/3608.htm))
+1. 格式参考[中央财经大学本科毕业论文材料](https://jwc.cufe.edu.cn/info/1124/3608.htm)
 
 2. 基于github用户zshicode的[南开大学系列模板项目](https://github.com/zshicode/LaTeX-Beamer-Nankai)以及DoniaHakurei的[CUFE_template_graduate_thesis](https://github.com/DoniaHakurei/CUFE_template_graduate_thesis)修改
