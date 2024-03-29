@@ -7,8 +7,8 @@
 
 一些需要注意的问题：
 \begin{enumerate}
-    \item 只有英文摘要的字体采用Times New Roman，文章其他部分的英文和数字都是宋体
-    \item 表格字号请注意设置为5号
+    \item 英文字体全部采用Times New Roman
+    \item 表格字号请注意设置为small
     \item 如希望在图表题注上注明脚注，请参考示例
 \end{enumerate}
 
@@ -18,8 +18,8 @@
     \centering
     \small
     \caption{东方幻想乡六名角色的分工}
-    \begin{tabular}{lc}
-        \toprule[1.5bp]
+    \begin{tabularx}{\textwidth}{X >{\centering\arraybackslash}X}
+        \toprule[1.0bp]
         成员    & 分工      \\
         \midrule[0.75bp]
         博丽灵梦  & 乐园的可爱巫女 \\
@@ -27,9 +27,9 @@
         东风谷早苗 & 祭祀风的人类  \\
         十六夜咲夜 & 十六夜宵夜   \\
         魂魄妖梦  & 十六夜宵夜   \\
-        \bottomrule[1.5bp]
-    \end{tabular}
-    \vspace{22bp}
+        \bottomrule[1.0bp]
+    \end{tabularx}
+    \vspace{4bp}
 \end{table}
 
 咲夜拥有拥有操纵时间的能力。
