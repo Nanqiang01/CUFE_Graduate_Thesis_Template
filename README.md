@@ -6,6 +6,10 @@ Unofficial Central University of Finance and Economics LaTeX template for banche
 
 Powered by GPT-4
 
+## 注意！！！
+
+请注意格式问题可能会导致拒绝答辩。以任何形式采用该模板意味着您已承认：使用该模板而引发的一切负面或正面后果与任何你以外的人都没有任何关系。
+
 > ## 20240330更新
 > 1. 根据教务处最新模板修改
 > 2. 修正全局字体问题
