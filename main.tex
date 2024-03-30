@@ -31,7 +31,7 @@
 \usepackage{algpseudocode} % 代替过时的 algorithmic，用于编写伪代码
 \usepackage{algorithm} % 插入算法伪代码环境
 \usepackage{scrextend} % KOMA-Script 扩展
-\usepackage[perpage]{footmisc} % 脚注相关设置
+\usepackage[perpage, bottom]{footmisc} % 脚注相关设置
 \usepackage{pifont} % 提供圆圈数字等特殊字符
 \usepackage[T1]{fontenc} % 字体编码为 T1
 \usepackage[
@@ -62,7 +62,9 @@
 %---------------------------------------------------------------------
 %  脚注设置
 %---------------------------------------------------------------------
-\renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}}
+% 设置带圈数字
+\newcommand*\dingctr[1]{\protect\ding{\number\numexpr\value{#1}+171\relax}}
+\renewcommand*\thefootnote{\dingctr{footnote}}
 % 脚注字体设置为small
 \renewcommand{\footnotesize}{\small}
 \deffootnote[1em]{1em}{1em}{\small\thefootnotemark\space}
