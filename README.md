@@ -20,7 +20,7 @@ Powered by GPT-4
 > 7. 修复了目录的引用超链接问题
 > 8. 消灭了所有警告信息
 
-# 使用说明
+## 使用说明
 
 建议采用编译链：latexmk (xelatex)（推荐）、xelatex->biber->xelatex->xelatex
 
@@ -28,13 +28,17 @@ Powered by GPT-4
 
 如果不需要bibtex管理参考文献，可以不用biber，直接单次（或多次）xelatex，能节省一些时间
 
-# 注意事项
+## 注意事项
 1. 表格字号需要手动设置\small
 2. 图表部分间隔需手动加间距，具体见代码
 3. 根据目前教务处给出的模板，对一个中文字符的理解应当是一个中文空格，即0.5em，本模板使用该标准
 
-# 参考资源
+## 参考资源
 
 1. 格式参考[中央财经大学本科毕业论文材料](https://jwc.cufe.edu.cn/info/1124/3608.htm)
 
 2. 基于github用户zshicode的[南开大学系列模板项目](https://github.com/zshicode/LaTeX-Beamer-Nankai)以及DoniaHakurei的[CUFE_template_graduate_thesis](https://github.com/DoniaHakurei/CUFE_template_graduate_thesis)修改
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Nanqiang01/CUFE_template_graduate_thesis&type=Date)](https://star-history.com/#Nanqiang01/CUFE_template_graduate_thesis&Date)
