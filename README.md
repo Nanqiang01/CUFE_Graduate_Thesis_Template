@@ -41,4 +41,10 @@ Powered by GPT-4
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=Nanqiang01/CUFE_template_graduate_thesis&type=Date)](https://star-history.com/#Nanqiang01/CUFE_template_graduate_thesis&Date)
+<a href="https://star-history.com/#Nanqiang01/CUFE_template_graduate_thesis&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Nanqiang01/CUFE_template_graduate_thesis&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Nanqiang01/CUFE_template_graduate_thesis&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Nanqiang01/CUFE_template_graduate_thesis&type=Date" />
+ </picture>
+</a>
