@@ -173,14 +173,10 @@
 \setCJKmainfont[AutoFakeBold=2.17, AutoFakeSlant]{SimSun}
 \setCJKsansfont[AutoFakeBold=2.17, AutoFakeSlant]{SimHei}
 \setCJKmonofont{FangSong}
-\setCJKfamilyfont{zhsong}[AutoFakeBold=2.17, AutoFakeSlant]{SimSun}
-\setCJKfamilyfont{zhhei}[AutoFakeBold=2.17, AutoFakeSlant]{SimHei}
-\setCJKfamilyfont{zhkai}{KaiTi}
-\setCJKfamilyfont{zhfs}{FangSong}
-\renewcommand*{\songti}{\CJKfamily{zhsong}}
-\renewcommand*{\heiti}{\CJKfamily{zhhei}}
-\renewcommand*{\kaishu}{\CJKfamily{zhkai}}
-\renewcommand*{\fangsong}{\CJKfamily{zhfs}}
+\newCJKfontfamily\songti[AutoFakeBold=2.17, AutoFakeSlant]{SimSun}
+\newCJKfontfamily\heiti[AutoFakeBold=2.17, AutoFakeSlant]{SimHei}
+\newCJKfontfamily\kaishu{KaiTi}
+\newCJKfontfamily\fangsong{FangSong}
 \makeatletter
 % 重定义\normalsize（小四）来设置字体为12bp和行间距为22bp
 \renewcommand\normalsize{%
