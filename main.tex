@@ -37,12 +37,14 @@
 \usepackage[
     backend=biber,
     style=gb7714-2015,
+    backref=true,
     defernumbers=true,
     gbnamefmt=lowercase,
-    doi=false,	%显示doi与否
-    url=false,	%显示url与否
-    sorting=nyt, %以姓氏编号
-    ]{biblatex} % 参考文献管理
+    doi=false, %显示doi与否
+    url=false, %显示url与否
+    sorting=gb7714-2015, %以姓氏编号
+    sortlocale=zh__pinyin, %按拼音排序
+]{biblatex} % 参考文献管理
 \usepackage{amsmath, amssymb, amsthm, amsfonts, mathtools} % 数学环境
 \usepackage{tikz} % tikz绘图
 \usetikzlibrary{arrows.meta, positioning, shapes.geometric} % tikz绘图库
