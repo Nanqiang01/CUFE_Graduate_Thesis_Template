@@ -35,15 +35,19 @@
 \usepackage{pifont} % 提供圆圈数字等特殊字符
 \usepackage[T1]{fontenc} % 字体编码为 T1
 \usepackage[
-    backend=biber,
-    style=gb7714-2015,
-    backref=true,
-    defernumbers=true,
-    gbnamefmt=lowercase,
+    backend=biber, % 编译后端
+    style=gb7714-2015ay, % 国标参考文献样式
+    % backref=true, % 文献引用页码
+    defernumbers=true, % 参考文献编号延迟
+    gbnamefmt=lowercase, % 姓名格式
     doi=false, %显示doi与否
     url=false, %显示url与否
-    sorting=gb7714-2015, %以姓氏编号
+    % sorting=gb7714-2015, %以姓氏编号
+    maxcitenames=2, %最多显示两个作者
+    mincitenames=1, %最少显示一个作者
+    % sortcites=false, %不排序
     sortlocale=zh__pinyin, %按拼音排序
+    gbalign=gb7714-2015, %对齐方式，同时显示序号
 ]{biblatex} % 参考文献管理
 \usepackage{amsmath, amssymb, amsthm, amsfonts, mathtools} % 数学环境
 \usepackage{tikz} % tikz绘图
@@ -83,13 +87,16 @@
 \renewcommand*{\bibfont}{\normalsize}
 \addbibresource{references/reference.bib}
 % 引用文献设置为上标
-\begin{comment}
-        \makeatletter
-        \def\@cite#1#2{\textsuperscript{[{#1\if@tempswa , #2\fi}]}}
-        \makeatother
-\end{comment}
+%\begin{comment}
+%        \makeatletter
+%        \def\@cite#1#2{\textsuperscript{[{#1\if@tempswa , #2\fi}]}}
+%        \makeatother
+%\end{comment}
 % 参考文献间距
 \setlength{\bibitemsep}{0bp}
+\setlength{\bibnamesep}{0bp}
+\setlength{\bibitemindent}{0bp} % bibitemindent表示一条文献中第一行相对后面各行的缩进
+\setlength{\bibhang}{0bp} % 著者-出版年制中 bibhang 表示的各行起始位置到页边的距离
 %---------------------------------------------------------------------
 %  附录代码设置
 %---------------------------------------------------------------------
