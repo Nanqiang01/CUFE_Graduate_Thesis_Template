@@ -36,7 +36,8 @@
 \usepackage[T1]{fontenc} % 字体编码为 T1
 \usepackage[
     backend=biber, % 编译后端
-    style=gb7714-2015ay, % 国标参考文献样式
+    citestyle=gb7714-2015ay, % 文献引用样式
+    bibstyle=gb7714-2015, % 参考文献样式
     % backref=true, % 文献引用页码
     defernumbers=true, % 参考文献编号延迟
     gbnamefmt=lowercase, % 姓名格式
@@ -47,7 +48,7 @@
     mincitenames=1, %最少显示一个作者
     % sortcites=false, %不排序
     sortlocale=zh__pinyin, %按拼音排序
-    gbalign=gb7714-2015, %对齐方式，同时显示序号
+    gbalign=left, %对齐方式，同时显示序号
 ]{biblatex} % 参考文献管理
 \usepackage{amsmath, amssymb, amsthm, amsfonts, mathtools} % 数学环境
 \usepackage{tikz} % tikz绘图
