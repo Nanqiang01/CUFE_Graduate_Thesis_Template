@@ -49,6 +49,7 @@
     % sortcites=false, %不排序
     sortlocale=zh__pinyin, %按拼音排序
     gbalign=left, %对齐方式，同时显示序号
+    gbcitelabel=quanjiao %引用全角括号及标点
 ]{biblatex} % 参考文献管理
 \usepackage{amsmath, amssymb, amsthm, amsfonts, mathtools} % 数学环境
 \usepackage{tikz} % tikz绘图
@@ -182,6 +183,8 @@
 % 调整字体
 %---------------------------------------------------------------------
 \setmainfont{Times New Roman}
+\usepackage{fontspec}
+\newfontfamily\eheiti[AutoFakeBold=false]{SimHei}
 \setCJKmainfont[AutoFakeBold=2.17, AutoFakeSlant]{SimSun}
 \setCJKsansfont[AutoFakeBold=2.17, AutoFakeSlant]{SimHei}
 \setCJKmonofont{FangSong}
